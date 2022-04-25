@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { jsx, ThemeProvider } from "@emotion/react";
+import theme from "./style/theme";
+import Editor from "./components/Editor";
+import { createContext, useState } from "react";
+import { Global, css } from "@emotion/react";
+import globalStyles from "./style/globalStyles";
+
+export const DarkModeContext = createContext({
+  mode: "light",
+  toggleMode: () => {},
+});
 
 function App() {
+  // const [mode, setMode] = useState<PaletteMode>("light");
+  // const theme = makeTheme(mode);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Global styles={globalStyles} />
+      <Editor />
+    </ThemeProvider>
   );
 }
 

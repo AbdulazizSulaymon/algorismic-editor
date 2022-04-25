@@ -1,7 +1,7 @@
 # Algorismic Editor
 
-Algorismic Editor [github](https://github.com/AbdulazizSulaymon/algorismic-editor).
-[website](https://algorismic-editor.vercel.app/)
+Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-editor),
+[Website](https://algorismic-editor.vercel.app/)
 
 ## Todo
 
