@@ -1,6 +1,7 @@
 # Algorismic Editor
 
-Algorismic Editor [Algorismic Editor](https://github.com/facebook/create-react-app).
+Algorismic Editor [github](https://github.com/AbdulazizSulaymon/algorismic-editor).
+[website](https://algorismic-editor.vercel.app/)
 
 ## Todo
 
