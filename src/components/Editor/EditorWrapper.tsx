@@ -4,21 +4,22 @@ const EditorWrapper = styled.div`
   header {
     display: flex;
     align-items: center;
-    padding: 10px 40px;
+    padding: 8px 20px;
     box-shadow: 0 10px 20px 0 #00000022;
 
     .logo {
-      height: 40px;
+      height: 30px;
       margin-right: 14px;
     }
     .title {
       font-size: 20px !important ;
+      font-weight: 700;
     }
   }
 
   section.panel {
     display: flex;
-    max-width: 1600px;
+    max-width: 2000px;
     margin: auto;
 
     section.components {

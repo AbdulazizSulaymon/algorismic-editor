@@ -1,9 +1,9 @@
-import { ReactChild } from "react";
+import React from "react";
 
 type Props = {
-  children: ReactChild;
+  children: React.ReactNode;
 };
 
 export default function Box({ children }: Props) {
-  return <div>Box</div>;
+  return <div>{children}</div>;
 }

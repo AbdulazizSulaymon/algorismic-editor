@@ -35,6 +35,22 @@ const globalStyles = css`
   a {
     font-weight: 300;
   }
+
+  .d-flex {
+    display: flex;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .ai-center {
+    align-items: center;
+  }
+  .jc-center {
+    justify-content: center;
+  }
+  .jc-between {
+    justify-content: space-between;
+  }
 `;
 
 export default globalStyles;

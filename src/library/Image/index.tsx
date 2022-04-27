@@ -1,7 +1,7 @@
-import { ReactChild } from "react";
+import React from "react";
 
 type Props = {
-  src: string | ReactChild;
+  src: string | React.ReactNode;
 };
 
 export default function Image({ src }: Props) {

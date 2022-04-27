@@ -1,7 +1,7 @@
-import { ReactChild } from "react";
+import React from "react";
 
 type Props = {
-  children: ReactChild;
+  children: React.ReactNode;
 };
 
 export default function Text({ children }: Props) {

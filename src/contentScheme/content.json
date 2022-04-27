@@ -1,0 +1,98 @@
+{
+  "page": {
+    "children": [
+      {
+        "tag": "div",
+        "attributes": {
+          "style": {
+            "padding": 20,
+            "border": "2px solid black"
+          }
+        },
+        "children": [
+          {
+            "tag": "p",
+            "attributes": {
+              "style": {
+                "fontSize": 30,
+                "pAlign": "center",
+                "color": "#123"
+              }
+            },
+            "children": "Tashkent City"
+          },
+          {
+            "tag": "button",
+            "attributes": {
+              "style": {
+                "paddingTop": 10,
+                "paddingRight": 14,
+                "paddingBottom": 10,
+                "paddingLeft": 20,
+                "marginTop": 60,
+                "fontSize": 20,
+                "pAlign": "center",
+                "color": "#123"
+              }
+            },
+            "children": "Website"
+          }
+        ]
+      },
+      {
+        "tag": "div",
+        "children": {
+          "tag": "p",
+          "attributes": {
+            "style": {
+              "color": "green"
+            }
+          },
+          "children": "Thank you!"
+        }
+      },
+      {
+        "tag": "div",
+        "attributes": {
+          "style": {}
+        },
+        "children": [
+          {
+            "tag": "div",
+            "attributes": {
+              "style": { "padding": 10, "border": "2px solid #123", "borderRadius": 10 }
+            },
+            "children": [
+              {
+                "tag": "p",
+                "attributes": {
+                  "style": {
+                    "color": "green"
+                  }
+                },
+                "children": "Thank you!"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attributes": {
+              "style": { "padding": 10, "border": "2px solid #123", "borderRadius": 10 }
+            },
+            "children": [
+              {
+                "tag": "p",
+                "attributes": {
+                  "style": {
+                    "color": "green"
+                  }
+                },
+                "children": "Thank you!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
