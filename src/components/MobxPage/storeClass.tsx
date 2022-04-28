@@ -7,7 +7,7 @@ type Todo = {
 };
 
 class ObservableTodoStore {
-  @observable todos: Todo[] = [];
+  @observable todos: Todo[] = [{ task: "string", completed: true }];
   @observable pendingRequests = 0;
 
   constructor() {

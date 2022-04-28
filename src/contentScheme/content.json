@@ -36,6 +36,22 @@
               }
             },
             "children": "Website"
+          },
+          {
+            "tag": "button",
+            "attributes": {
+              "style": {
+                "paddingTop": 10,
+                "paddingRight": 14,
+                "paddingBottom": 10,
+                "paddingLeft": 20,
+                "marginTop": 60,
+                "fontSize": 20,
+                "pAlign": "center",
+                "color": "#123"
+              }
+            },
+            "children": "Social Network"
           }
         ]
       },
@@ -48,7 +64,7 @@
               "color": "green"
             }
           },
-          "children": "Thank you!"
+          "children": "Thank you 1!"
         }
       },
       {
@@ -70,7 +86,7 @@
                     "color": "green"
                   }
                 },
-                "children": "Thank you!"
+                "children": "Thank you 2!"
               }
             ]
           },
@@ -87,7 +103,7 @@
                     "color": "green"
                   }
                 },
-                "children": "Thank you!"
+                "children": "Thank you 3!"
               }
             ]
           }

@@ -20,8 +20,8 @@ function App() {
     <StoreContext.Provider value={new Store()}>
       <ThemeProvider theme={theme}>
         <Global styles={globalStyles} />
-        {/* <Editor content={content} /> */}
-        <MobxPage />
+        <Editor content={content} />
+        {/* <MobxPage /> */}
       </ThemeProvider>
     </StoreContext.Provider>
   );

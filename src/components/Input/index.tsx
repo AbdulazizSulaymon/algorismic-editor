@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import React from "react";
 
 const StyledInput = styled.div`
   margin-right: 10px;
@@ -24,15 +25,31 @@ type Props = {
   value: string | number;
   label: string;
   name: string;
-  type: string;
+  type?: string;
+  onChange?: React.ChangeEventHandler;
+  placeholder?: string;
 };
 
-export default function Input({ value, type, label, name }: Props) {
+export default function Input({
+  value,
+  type = "text",
+  label,
+  name,
+  placeholder = "",
+  onChange,
+}: Props) {
   const id = `id-${name}`;
   return (
     <StyledInput>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name} type={type} value={value} onChange={() => {}} />
+      <input
+        id={id}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </StyledInput>
   );
 }

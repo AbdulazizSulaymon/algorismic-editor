@@ -5,37 +5,44 @@ import ComponentWrapper from "components/ComponentWrapper";
 import CollapseGroup from "components/CollapseGroup";
 import Input from "components/Input";
 import Controls from "./Controls";
-
 import ContentMaker from "./ContentMaker";
-import { scheme } from "./types";
+import { children, element, scheme } from "./types";
 import { observer } from "mobx-react";
-import { useContext, useEffect } from "react";
+import { memo, useContext, useEffect } from "react";
 import StoreContext from "store/StoreContext";
+import { iteratorChildren } from "./iteratorChildren";
 
 const Components = () => {
   return (
     <>
-      {library.map((Item) => (
+      {library.map((Item, index) => (
         // <ComponentWrapper>
-        <Item style={{}}>123</Item>
+        <Item style={{}} key={index}>
+          123
+        </Item>
         // </ComponentWrapper>
       ))}
     </>
   );
 };
 
-const style = {
-  padding: 20,
-  margin: 20,
-  color: "red",
-};
-
 const Editor = observer(({ content }: { content: scheme }) => {
   const store = useContext(StoreContext);
-  console.log(store.scheme.page);
 
   useEffect(() => {
-    store.scheme.page = content.page;
+    store.scheme = content;
+
+    let count = 1;
+    iteratorChildren(store.scheme.page.children, (elem: element) => {
+      if (!elem.attributes) elem.attributes = {};
+      elem.attributes.id = `id${count++}`;
+    });
+
+    let arr: element[] = [];
+    iteratorChildren(content.page.children, (elem: element) => {
+      arr.push(elem);
+    });
+    console.log(arr);
   }, []);
 
   return (
@@ -51,13 +58,7 @@ const Editor = observer(({ content }: { content: scheme }) => {
         </section>
         <main>
           <Title>Main</Title>
-          {library.map((Item) => (
-            <ComponentWrapper>
-              <Item style={style}>123</Item>
-            </ComponentWrapper>
-          ))}
-          <hr />
-          <ContentMaker scheme={store.scheme} />
+          <ContentMaker />
         </main>
         <aside>
           <Title>Controls</Title>
@@ -69,4 +70,4 @@ const Editor = observer(({ content }: { content: scheme }) => {
   );
 });
 
-export default Editor;
+export default memo(Editor);

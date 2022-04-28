@@ -5,6 +5,7 @@ import React from "react";
 const Wrapper = styled.div`
   border: 1px solid transparent;
   position: relative;
+  /* display: ; */
 
   .controls {
     position: absolute;
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
     border-radius: 2px;
     transition: 0.2s;
 
-    .controls {
+    & > .controls {
       opacity: 1;
     }
   }

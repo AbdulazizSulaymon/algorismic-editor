@@ -1,12 +1,17 @@
-import { scheme } from "components/Editor/types";
-import { action, autorun, computed, makeObservable, observable } from "mobx";
+import { element, scheme } from "components/Editor/types";
+import { action, autorun, computed, configure, makeObservable, observable } from "mobx";
+
+configure({
+  enforceActions: "never",
+});
 
 class Store {
   @observable scheme: scheme = { page: { children: [] } };
+  @observable selectedElement: element = { tag: "", attributes: {}, children: [] };
 
   constructor() {
     makeObservable(this);
-    autorun(() => console.log(this.report));
+    autorun(() => console.log("Report", this.report));
   }
 
   //   @computed
@@ -15,7 +20,7 @@ class Store {
   //   }
 
   get report() {
-    return this.scheme;
+    return this.selectedElement;
   }
 }
 
