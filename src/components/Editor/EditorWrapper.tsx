@@ -6,6 +6,10 @@ const EditorWrapper = styled.div`
     align-items: center;
     padding: 8px 20px;
     box-shadow: 0 10px 20px 0 #00000022;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    ${({ theme }: { theme: any }) => `background-color: ${theme.colors.light};`}
 
     .logo {
       height: 30px;
@@ -25,16 +29,27 @@ const EditorWrapper = styled.div`
     section.components {
       width: 260px;
       padding: 20px;
+      position: sticky;
+      top: 0;
+      max-height: calc(100vh - 80px);
+      overflow: auto;
     }
     main {
       flex: 1;
       padding: 20px;
-      min-height: calc(100vh - 80px);
+      position: sticky;
+      top: 0;
+      max-height: calc(100vh - 80px);
       border: 1px solid #c6cae2;
+      overflow: auto;
     }
     aside {
       width: 260px;
       padding: 20px;
+      position: sticky;
+      top: 0;
+      max-height: calc(100vh - 80px);
+      overflow: auto;
     }
   }
 

@@ -1,7 +1,7 @@
 import Title from "components/Title";
 import { element } from "./types";
 import { observer } from "mobx-react";
-import { createRef, DragEvent, memo, useContext, useEffect } from "react";
+import { DragEvent, memo, useContext, useEffect } from "react";
 import StoreContext from "store/StoreContext";
 import { iteratorChildren } from "./iteratorChildren";
 import { toJS } from "mobx";

@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 import { ArrowDownward, ArrowUpward, ContentCopy, Delete } from "@mui/icons-material";
+import { iteratorChildren } from "components/Editor/iteratorChildren";
+import { element } from "components/Editor/types";
 import { toJS } from "mobx";
 import { observer } from "mobx-react";
 import React, { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { getEmptyElement } from "store/Store";
 import StoreContext from "store/StoreContext";
 
 const Wrapper = styled.div`
@@ -36,48 +39,60 @@ const Wrapper = styled.div`
   }
 `;
 
-type Props = {
-  children: React.ReactNode;
-};
-
 const QuickControl = observer(() => {
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
 
   const store = useContext(StoreContext);
   const id = toJS(store.selectedElement.attributes.id);
-  console.log(id);
+  const fatherId = toJS(store.selectedElementFather.attributes.id);
 
   useEffect(() => {
     if (!id) return;
 
-    const elem = document.getElementById(id);
-    const rect: any = elem?.getBoundingClientRect() || {};
+    const updatePosition = () => {
+      const elem = document.getElementById(id);
+      const rect: any = elem?.getBoundingClientRect() || {};
 
-    console.log(rect.top, rect.left);
+      setTop(rect.top + window.scrollY || 0);
+      setLeft(rect.left + window.scrollX || 0);
+    };
+    updatePosition();
 
-    setTop(rect.top || 0);
-    setLeft(rect.left || 0);
+    const domNode: any = document.querySelector("main");
+    if (!domNode?.onscroll) domNode.onscroll = updatePosition;
+    if (!window.onresize) window.onresize = updatePosition;
   }, [id]);
+
+  const remove = () => {
+    iteratorChildren(store.scheme.page.children, (elem: any) => {
+      if (elem.attributes.id == fatherId) {
+        if (Array.isArray(elem.children)) {
+          elem.children.map((item: element, idx: number) => {
+            if (item.attributes.id === id) {
+              elem.children.splice(idx, 1);
+            }
+          });
+        } else elem.children = "";
+      }
+    });
+
+    store.selectedElement = getEmptyElement();
+    store.selectedElementFather = getEmptyElement();
+  };
 
   if (!id) return <></>;
 
   return createPortal(
-    <Wrapper
-      id="quickPanel"
-      onClick={() => {
-        console.log("ComponentWrapper clicked");
-      }}
-      style={{ top, left }}
-    >
+    <Wrapper id="quickPanel" style={{ top, left }}>
       <div className="controls">
-        <button>
+        {/* <button>
           <ArrowUpward />
         </button>
         <button>
           <ArrowDownward />
-        </button>
-        <button>
+        </button> */}
+        <button onClick={remove}>
           <Delete />
         </button>
       </div>

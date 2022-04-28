@@ -1,6 +1,6 @@
 const theme = {
   colors: {
-    primary: "hotpink",
+    light: "#eff1fe",
   },
 };
 

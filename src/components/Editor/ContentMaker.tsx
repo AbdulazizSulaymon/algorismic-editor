@@ -1,4 +1,4 @@
-import React, { DragEventHandler, ReactNode, useContext } from "react";
+import React, { DragEventHandler, useContext, useEffect } from "react";
 import { element } from "./types";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
@@ -10,16 +10,9 @@ import classNames from "classnames";
 import { iteratorChildren } from "./iteratorChildren";
 import QuickControl from "components/QuickControl";
 
-let isClicked = false;
+let countClicks = 0;
 
 const prepareAttributes = (attrs: any = {}, elem: element, store: Store) => {
-  attrs.style = {
-    ...attrs.style,
-    ...{
-      position: "relative",
-    },
-  };
-
   attrs.className = classNames({
     hover: store.selectedElement.attributes.id === attrs.id,
     "element-editor": true,
@@ -27,13 +20,14 @@ const prepareAttributes = (attrs: any = {}, elem: element, store: Store) => {
   });
 
   attrs.onClick = () => {
-    if (isClicked) return;
-    isClicked = true;
+    if (countClicks == 2) return;
+    countClicks++;
 
-    store.selectedElement = elem;
+    if (countClicks == 1) store.selectedElement = elem;
+    else if (countClicks == 2) store.selectedElementFather = elem;
 
     setTimeout(() => {
-      isClicked = false;
+      countClicks = 0;
     }, 100);
   };
 
@@ -64,26 +58,27 @@ const ContentMaker = observer(() => {
         elem.attributes.id = `id${store.lastId++}`;
       });
 
-      // console.log("newElem", newElem);
-      // console.log(toJS(elem));
-      // console.log(toJS(container));
+      const domNode = document.getElementById(elem.attributes.id);
+      domNode?.click();
 
-      if (Array.isArray(container))
-        container.map((item, index) => {
-          if (item.attributes.id == elem.attributes.id) container.splice(index + 1, 0, newElem);
-        });
-      else {
-        if (typeof container.children == "string")
-          container.children = [
-            { tag: "span", children: container.children, attributes: { id: store.lastId } },
-            newElem,
-          ];
-        else container.children = [container.children, newElem];
-      }
+      setTimeout(() => {
+        console.log("selectedElementFather id", toJS(store.selectedElementFather.attributes.id));
+        console.log(toJS(store.selectedElementFather));
+
+        let children: any = store.selectedElementFather.children;
+        if (Array.isArray(children)) {
+          children.map((item, idx) => {
+            if (item.attributes.id == store.selectedElement.attributes.id) {
+              children.splice(idx + 1, 0, newElem);
+            }
+          });
+        } else {
+          store.selectedElementFather.children = [children, newElem];
+        }
+      }, 100);
     };
 
     return (
-      //   <ComponentWrapper>
       <>
         <Tag {...attrs} key={attrs.id}>
           {typeof children != "string" ? getContent(children, children) : children}
@@ -104,7 +99,6 @@ const ContentMaker = observer(() => {
           </div>
         )}
       </>
-      //   </ComponentWrapper>
     );
   };
 
