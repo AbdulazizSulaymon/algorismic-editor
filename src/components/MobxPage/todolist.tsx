@@ -10,9 +10,6 @@ type Todo = {
 const TodoList = observer(({ name }: { name: string }) => {
   const store = useContext(StoreContext);
 
-  console.log(store);
-  console.log(name);
-
   useEffect(() => {
     store.todos = [
       {

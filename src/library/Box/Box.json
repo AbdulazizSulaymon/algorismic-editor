@@ -1,0 +1,17 @@
+{
+  "name": "Buttons Groups",
+  "tag": "button",
+  "attributes": { "style": { "padding": 20, "color": "green" } },
+  "children": [
+    {
+      "tag": "button",
+      "attributes": { "style": { "padding": 20, "color": "green" } },
+      "children": "Button1"
+    },
+    {
+      "tag": "button",
+      "attributes": { "style": { "padding": 20, "color": "green" } },
+      "children": "Button2"
+    }
+  ]
+}

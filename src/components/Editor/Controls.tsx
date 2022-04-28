@@ -11,7 +11,6 @@ import * as _ from "lodash";
 const Controls = observer(() => {
   const store = useContext(StoreContext);
   console.log(toJS(store.selectedElement));
-  console.log("Controls");
 
   const [target, setTarget] = useState({} as element);
 
@@ -30,8 +29,6 @@ const Controls = observer(() => {
 
   const getValue = (e: ChangeEvent<Element>) => {
     const input = e.target as HTMLInputElement;
-    console.log(input.value);
-
     return input.value;
   };
 

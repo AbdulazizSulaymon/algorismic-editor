@@ -17,7 +17,8 @@
     "jsx": "react-jsx",
     "useDefineForClassFields": true,
     "experimentalDecorators": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "types": ["@emotion/react/types/css-prop"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]

@@ -1,25 +1,20 @@
 import { element, scheme } from "components/Editor/types";
-import { action, autorun, computed, configure, makeObservable, observable } from "mobx";
+import { autorun, configure, makeAutoObservable } from "mobx";
 
 configure({
   enforceActions: "never",
 });
 
 class Store {
-  @observable scheme: scheme = { page: { children: [] } };
-  @observable selectedElement: element = { tag: "", attributes: {}, children: [] };
-  @observable draggingElement: element = { tag: "", attributes: {}, children: [] };
-  @observable isDragging: boolean = false;
+  scheme: scheme = { page: { children: [] } };
+  selectedElement: element = { tag: "", attributes: {}, children: [] };
+  draggingElement: element = { tag: "", attributes: {}, children: [] };
+  isDragging: boolean = false;
 
   constructor() {
-    makeObservable(this);
-    autorun(() => console.log("Report", this.report));
+    makeAutoObservable(this);
+    // autorun(() => console.log("Report", this.report));
   }
-
-  //   @computed
-  //   get completedTodosCount() {
-  //     return this.todos.filter((todo) => todo.completed === true).length;
-  //   }
 
   get report() {
     return this.selectedElement;

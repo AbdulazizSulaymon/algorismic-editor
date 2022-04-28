@@ -10,7 +10,8 @@ import { toJS } from "mobx";
 import StoreContext from "store/StoreContext";
 import Store from "store/Store";
 import ContentWrapper from "./ContentWrapper";
-import { Add, PlusOne } from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
+import classNames from "classnames";
 
 let isClicked = false;
 
@@ -22,7 +23,11 @@ const prepareAttributes = (attrs: any = {}, elem: element, store: Store) => {
     },
   };
 
-  attrs.className = `${attrs.className ?? ""} element-editor`;
+  attrs.className = classNames({
+    hover: store.selectedElement.attributes.id === attrs.id,
+    "element-editor": true,
+    [attrs.className]: attrs.className,
+  });
 
   attrs.onClick = () => {
     if (isClicked) return;
@@ -53,9 +58,6 @@ const ContentMaker = observer(() => {
 
     const drop: DragEventHandler<HTMLDivElement> = (e) => {
       e.preventDefault();
-
-      var data = e.dataTransfer.getData("component");
-      console.log(data);
 
       store.isDragging = false;
       console.log(toJS(store.draggingElement));

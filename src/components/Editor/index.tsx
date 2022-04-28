@@ -2,38 +2,14 @@ import Title from "components/Title";
 import EditorWrapper from "./EditorWrapper";
 import library from "library";
 import ComponentWrapper from "components/ComponentWrapper";
-import CollapseGroup from "components/CollapseGroup";
-import Input from "components/Input";
 import Controls from "./Controls";
 import ContentMaker from "./ContentMaker";
-import { children, element, scheme } from "./types";
+import { element, scheme } from "./types";
 import { observer } from "mobx-react";
-import { DragEvent, memo, useContext, useEffect } from "react";
+import { memo, useContext, useEffect } from "react";
 import StoreContext from "store/StoreContext";
 import { iteratorChildren } from "./iteratorChildren";
-import Button from "library/Button";
-
-const Components = observer(() => {
-  const store = useContext(StoreContext);
-
-  const drag = (e: DragEvent<HTMLDivElement>) => {
-    e.dataTransfer.setData("component", "123");
-    store.draggingElement = { tag: "DROPPP", attributes: {}, children: "a 123" };
-    store.isDragging = true;
-  };
-
-  return (
-    <>
-      {library.map((Item, index) => (
-        // <ComponentWrapper>
-        <Item style={{}} key={index} draggable={true} onDragStart={drag}>
-          123
-        </Item>
-        // </ComponentWrapper>
-      ))}
-    </>
-  );
-});
+import Components from "./Components";
 
 const Editor = observer(({ content }: { content: scheme }) => {
   const store = useContext(StoreContext);

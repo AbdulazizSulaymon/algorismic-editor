@@ -5,11 +5,18 @@ Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-edito
 
 ## Todo
 
-- Implement Mobx
-- Object Props
 - collapse style
 - themenig
-- https://editorjs.io/
+
+- add ids to elements that adding (1)
+- add element (2)
+- quick control panel (3)
+- remove element (4)
+- move element (5)
+- download element html code (6)
+- elements json (7)
+- beautiful elements (8)
+- do better layout (9)
 
 # links
 
@@ -19,3 +26,4 @@ Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-edito
 - https://github.com/wrannaman/mui-scaffold/tree/master/app
 - https://blocks-ui.com/demo/ //////
 - https://github.com/blocks/blocks
+- https://editorjs.io/

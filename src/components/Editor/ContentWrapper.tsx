@@ -7,7 +7,8 @@ const ContentWrapper = styled.div`
   padding: 10px;
 
   .element-editor {
-    &:hover {
+    &:hover,
+    &.hover {
       position: relative;
       outline: 1px dashed blue;
     }

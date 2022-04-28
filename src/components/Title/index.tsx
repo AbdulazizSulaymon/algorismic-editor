@@ -1,15 +1,22 @@
-import React, { ReactChild } from "react";
+/** @jsxImportSource @emotion/react */
+import React from "react";
 import styled from "@emotion/styled";
 
-const TitleStyled = styled.p`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
 type Props = {
-  children: JSX.Element | JSX.Element[] | ReactChild;
+  children: React.ReactNode;
+  sm?: boolean;
 };
 
-export default function Title({ children, ...props }: Props) {
-  return <TitleStyled {...props}>{children}</TitleStyled>;
+export default function Title({ children, sm, ...props }: Props) {
+  return (
+    <p
+      css={{
+        fontSize: (sm && 16) || 20,
+        fontWeight: 600,
+      }}
+      {...props}
+    >
+      {children}
+    </p>
+  );
 }
