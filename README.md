@@ -8,9 +8,9 @@ Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-edito
 - collapse style
 - themenig
 
-- add ids to elements that adding (1)
-- add element (2)
-- quick control panel (3)
+- add ids to elements that adding (1) //
+- add element (2) //
+- quick control panel (3) //
 - remove element (4)
 - move element (5)
 - download element html code (6)

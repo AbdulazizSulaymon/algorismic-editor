@@ -1,5 +1,5 @@
 import library from "library";
-import ComponentWrapper from "components/ComponentWrapper";
+import QuickControl from "components/QuickControl";
 import { observer } from "mobx-react";
 import { memo } from "react";
 import ElementMaker from "./ElementMaker";

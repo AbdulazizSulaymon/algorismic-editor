@@ -10,7 +10,6 @@ import * as _ from "lodash";
 
 const Controls = observer(() => {
   const store = useContext(StoreContext);
-  console.log(toJS(store.selectedElement));
 
   const [target, setTarget] = useState({} as element);
 
@@ -163,14 +162,14 @@ const Controls = observer(() => {
         </CollapseGroup>
         <CollapseGroup title={"Typography"}>
           <Input
-            value={style.color}
+            value={_.get(style, "color", "")}
             label="Color"
             name="color"
             type="color"
             onChange={(e) => (style.color = getValue(e))}
           />
           <Input
-            value={style.backgroundColor}
+            value={_.get(style, "backgroundColor", "")}
             label="Background Color"
             name="backgroundColor"
             type="color"

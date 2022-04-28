@@ -1,10 +1,5 @@
 import React, { DragEventHandler, ReactNode, useContext } from "react";
-import Box from "library/Box";
-import Button from "library/Button";
-import Text from "library/Text";
-import Image from "library/Image";
-import { element, scheme } from "./types";
-import ComponentWrapper from "components/ComponentWrapper";
+import { element } from "./types";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import StoreContext from "store/StoreContext";
@@ -12,6 +7,8 @@ import Store from "store/Store";
 import ContentWrapper from "./ContentWrapper";
 import { Add } from "@mui/icons-material";
 import classNames from "classnames";
+import { iteratorChildren } from "./iteratorChildren";
+import QuickControl from "components/QuickControl";
 
 let isClicked = false;
 
@@ -47,7 +44,7 @@ const ContentMaker = observer(() => {
   const store = useContext(StoreContext);
   const { scheme } = store;
 
-  const getElement = (elem: element) => {
+  const getElement = (elem: element, container: any) => {
     const { tag: Tag, attributes, children } = elem;
 
     const attrs = prepareAttributes(toJS(attributes), elem, store);
@@ -60,16 +57,36 @@ const ContentMaker = observer(() => {
       e.preventDefault();
 
       store.isDragging = false;
-      console.log(toJS(store.draggingElement));
+      const newElem = toJS(store.draggingElement);
 
-      //   e.target.appendChild(document.getElementById(data));
+      iteratorChildren(newElem, (elem: element) => {
+        if (!elem.attributes) elem.attributes = {};
+        elem.attributes.id = `id${store.lastId++}`;
+      });
+
+      // console.log("newElem", newElem);
+      // console.log(toJS(elem));
+      // console.log(toJS(container));
+
+      if (Array.isArray(container))
+        container.map((item, index) => {
+          if (item.attributes.id == elem.attributes.id) container.splice(index + 1, 0, newElem);
+        });
+      else {
+        if (typeof container.children == "string")
+          container.children = [
+            { tag: "span", children: container.children, attributes: { id: store.lastId } },
+            newElem,
+          ];
+        else container.children = [container.children, newElem];
+      }
     };
 
     return (
       //   <ComponentWrapper>
       <>
         <Tag {...attrs} key={attrs.id}>
-          {typeof children != "string" ? getContent(children) : children}
+          {typeof children != "string" ? getContent(children, children) : children}
         </Tag>
         {store.isDragging && (
           <div
@@ -90,13 +107,29 @@ const ContentMaker = observer(() => {
       //   </ComponentWrapper>
     );
   };
-  const getElements = (item: element) =>
-    typeof item === "string" ? getElement({ tag: "Text", children: item }) : getElement(item);
 
-  const getContent = (items: any): React.ReactNode =>
-    Array.isArray(items) ? items.map((item) => getElements(item)) : getElements(items);
+  const getElements = (item: element, container: element[]) =>
+    typeof item === "string"
+      ? getElement({ tag: "span", children: item, attributes: { id: store.lastId } }, container)
+      : getElement(item, container);
 
-  return <ContentWrapper>{getContent(scheme.page.children)}</ContentWrapper>;
+  const getContent = (items: any, container: any): React.ReactNode => {
+    return Array.isArray(items)
+      ? items.map((item) => getElements(item, items))
+      : getElements(items, container);
+  };
+
+  // scheme.page.children = [{ tag: "div", children: scheme.page.children }];
+
+  return (
+    <ContentWrapper>
+      {getContent(
+        scheme.page.children,
+        Array.isArray(scheme.page.children) ? scheme.page.children : scheme.page
+      )}
+      <QuickControl />
+    </ContentWrapper>
+  );
 });
 
 export default ContentMaker;

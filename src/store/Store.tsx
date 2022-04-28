@@ -10,6 +10,7 @@ class Store {
   selectedElement: element = { tag: "", attributes: {}, children: [] };
   draggingElement: element = { tag: "", attributes: {}, children: [] };
   isDragging: boolean = false;
+  lastId: number = 1;
 
   constructor() {
     makeAutoObservable(this);

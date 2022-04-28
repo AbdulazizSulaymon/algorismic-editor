@@ -4,7 +4,7 @@ export interface element {
   name?: string;
   tag: string;
   attributes?: any;
-  children?: children;
+  children: children;
 }
 
 export interface scheme {
