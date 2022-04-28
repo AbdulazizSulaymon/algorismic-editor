@@ -8,23 +8,32 @@ import Controls from "./Controls";
 import ContentMaker from "./ContentMaker";
 import { children, element, scheme } from "./types";
 import { observer } from "mobx-react";
-import { memo, useContext, useEffect } from "react";
+import { DragEvent, memo, useContext, useEffect } from "react";
 import StoreContext from "store/StoreContext";
 import { iteratorChildren } from "./iteratorChildren";
+import Button from "library/Button";
 
-const Components = () => {
+const Components = observer(() => {
+  const store = useContext(StoreContext);
+
+  const drag = (e: DragEvent<HTMLDivElement>) => {
+    e.dataTransfer.setData("component", "123");
+    store.draggingElement = { tag: "DROPPP", attributes: {}, children: "a 123" };
+    store.isDragging = true;
+  };
+
   return (
     <>
       {library.map((Item, index) => (
         // <ComponentWrapper>
-        <Item style={{}} key={index}>
+        <Item style={{}} key={index} draggable={true} onDragStart={drag}>
           123
         </Item>
         // </ComponentWrapper>
       ))}
     </>
   );
-};
+});
 
 const Editor = observer(({ content }: { content: scheme }) => {
   const store = useContext(StoreContext);

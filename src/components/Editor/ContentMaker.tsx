@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import React, { DragEventHandler, ReactNode, useContext } from "react";
 import Box from "library/Box";
 import Button from "library/Button";
 import Text from "library/Text";
@@ -10,6 +10,7 @@ import { toJS } from "mobx";
 import StoreContext from "store/StoreContext";
 import Store from "store/Store";
 import ContentWrapper from "./ContentWrapper";
+import { Add, PlusOne } from "@mui/icons-material";
 
 let isClicked = false;
 
@@ -46,11 +47,44 @@ const ContentMaker = observer(() => {
 
     const attrs = prepareAttributes(toJS(attributes), elem, store);
 
+    const allowDrop: DragEventHandler<HTMLDivElement> = (e) => {
+      e.preventDefault();
+    };
+
+    const drop: DragEventHandler<HTMLDivElement> = (e) => {
+      e.preventDefault();
+
+      var data = e.dataTransfer.getData("component");
+      console.log(data);
+
+      store.isDragging = false;
+      console.log(toJS(store.draggingElement));
+
+      //   e.target.appendChild(document.getElementById(data));
+    };
+
     return (
       //   <ComponentWrapper>
-      <Tag {...attrs} key={attrs.id}>
-        {typeof children != "string" ? getContent(children) : children}
-      </Tag>
+      <>
+        <Tag {...attrs} key={attrs.id}>
+          {typeof children != "string" ? getContent(children) : children}
+        </Tag>
+        {store.isDragging && (
+          <div
+            onDrop={drop}
+            onDragOver={allowDrop}
+            style={{
+              padding: "6px 10px",
+              margin: "10px",
+              border: "1px solid black",
+              borderRadius: 6,
+              display: "inline-block",
+            }}
+          >
+            <Add />
+          </div>
+        )}
+      </>
       //   </ComponentWrapper>
     );
   };

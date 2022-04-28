@@ -8,6 +8,8 @@ configure({
 class Store {
   @observable scheme: scheme = { page: { children: [] } };
   @observable selectedElement: element = { tag: "", attributes: {}, children: [] };
+  @observable draggingElement: element = { tag: "", attributes: {}, children: [] };
+  @observable isDragging: boolean = false;
 
   constructor() {
     makeObservable(this);
