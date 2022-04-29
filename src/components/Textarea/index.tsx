@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const StyledInput = styled.div`
+const StyledTextArea = styled.div`
   margin-right: 10px;
   margin-bottom: 10px;
   flex: 1;
@@ -14,8 +14,10 @@ const StyledInput = styled.div`
     border: none !important ;
     outline: none !important ;
     border-radius: 4px;
-    min-width: 30px;
+    min-width: 100%;
+    max-width: 100%;
     width: 100%;
+    min-height: 50px;
   }
 `;
 
@@ -23,15 +25,16 @@ type Props = {
   value: string | number;
   label: string;
   name: string;
-  type: string;
+  onChange?: React.ChangeEventHandler;
+  placeholder?: string;
 };
 
-export default function Input({ value, label, name }: Props) {
+export default function TextArea({ value, label, name, placeholder = "", onChange }: Props) {
   const id = `id-${name}`;
   return (
-    <StyledInput>
+    <StyledTextArea>
       <label htmlFor={id}>{label}</label>
-      <textarea id={id} name={name} value={value} onChange={() => {}} />
-    </StyledInput>
+      <textarea id={id} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+    </StyledTextArea>
   );
 }

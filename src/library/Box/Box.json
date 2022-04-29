@@ -4,8 +4,10 @@
   "attributes": {
     "style": {
       "padding": 20,
+      "marginTop": 20,
+      "margiBottom": 20,
       "border": "2px solid black",
-      "box-shadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
+      "boxShadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
       "borderRadius": 10,
       "overflow": "hidden"
     }

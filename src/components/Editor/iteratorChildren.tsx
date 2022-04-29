@@ -10,7 +10,7 @@ export const iteratorChildren = (children: children, callback: any = () => {}) =
     callback(item);
 
     return typeof item === "string"
-      ? getElement({ tag: "Text", children: item })
+      ? getElement({ tag: "span", children: item })
       : getElement(item);
   };
 

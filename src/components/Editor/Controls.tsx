@@ -7,6 +7,77 @@ import Input from "../Input";
 import { iteratorChildren } from "./iteratorChildren";
 import { element } from "./types";
 import * as _ from "lodash";
+import TextArea from "components/Textarea";
+import Button from "components/Button";
+
+const DownloadText = (text: string, name: string) => {
+  var fileBlob = new Blob([text], { type: "application/octet-binary" });
+
+  const link = document.createElement("a");
+  link.setAttribute("href", URL.createObjectURL(fileBlob));
+  link.setAttribute("download", name);
+  link.target = "_blank";
+  document.body.appendChild(link);
+  link.click();
+};
+
+const preText = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;0,600;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Algorismic</title>
+    <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #eff1fe;
+    }
+  
+    * {
+      box-sizing: border-box;
+    }
+  
+    ul {
+      list-style-type: none;
+    }
+  
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    div,
+    a {
+      font-family: "Rubik", sans-serif !important;
+    }
+  
+    p,
+    span,
+    div,
+    a {
+      font-weight: 300;
+    }
+    </style>
+  </head>
+  <body>  
+
+`;
+
+const postText = `</body>
+</html>`;
 
 const Controls = observer(() => {
   const store = useContext(StoreContext);
@@ -24,15 +95,34 @@ const Controls = observer(() => {
   // target.attributes.style.color = "red";
 
   let { style } = target.attributes;
-  // style.color = "blue";
+  let { children } = target;
 
   const getValue = (e: ChangeEvent<Element>) => {
     const input = e.target as HTMLInputElement;
     return input.value;
   };
 
+  const download = () => {
+    const id = target.attributes.id;
+    const domNode = document.getElementById(id);
+    const outer = domNode?.outerHTML;
+    console.log(outer);
+    if (outer) DownloadText(`${preText}${outer}${postText}`, "page.html");
+  };
+
   return (
     <>
+      {typeof children == "string" && (
+        <TextArea
+          value={children}
+          label="Content"
+          name="Content"
+          onChange={(e) => {
+            target.children = getValue(e);
+          }}
+          placeholder="Be careful"
+        />
+      )}
       <CollapseGroup title={"Dimensions"}>
         <CollapseGroup title={"Width and Height"}>
           <div className="d-flex">
@@ -177,6 +267,7 @@ const Controls = observer(() => {
           />
         </CollapseGroup>
       </CollapseGroup>
+      <Button onClick={download}>Download HTML</Button>
     </>
   );
 });
