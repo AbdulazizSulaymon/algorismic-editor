@@ -95,7 +95,7 @@ const Controls = observer(() => {
   // target.attributes.style.color = "red";
 
   let { style } = target.attributes;
-  let { children } = target;
+  let { tag, attributes, children } = target;
 
   const getValue = (e: ChangeEvent<Element>) => {
     const input = e.target as HTMLInputElement;
@@ -122,6 +122,28 @@ const Controls = observer(() => {
           }}
           placeholder="Be careful"
         />
+      )}
+      {tag == "img" && (
+        <>
+          <Input
+            value={_.get(attributes, "src", "")}
+            label="source"
+            name="source"
+            onChange={(e) => {
+              target.attributes.src = getValue(e);
+            }}
+            placeholder="src"
+          />
+          <Input
+            value={_.get(attributes, "alt", "")}
+            label="alt"
+            name="alt"
+            onChange={(e) => {
+              target.attributes.alt = getValue(e);
+            }}
+            placeholder="alt"
+          />
+        </>
       )}
       <CollapseGroup title={"Dimensions"}>
         <CollapseGroup title={"Width and Height"}>

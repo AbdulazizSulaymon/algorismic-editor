@@ -5,6 +5,8 @@ const StyledInput = styled.div`
   margin-right: 10px;
   margin-bottom: 10px;
   flex: 1;
+  width: 100%;
+  max-width: 190px;
 
   label {
     margin-bottom: 4px;
@@ -17,7 +19,6 @@ const StyledInput = styled.div`
     border-radius: 4px;
     min-width: 30px;
     width: 100%;
-    max-width: 120px;
   }
 `;
 
