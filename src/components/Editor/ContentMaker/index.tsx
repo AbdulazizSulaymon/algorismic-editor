@@ -1,5 +1,5 @@
 import React, { DragEventHandler, useContext, useEffect } from "react";
-import { element } from "./types";
+import { element } from "../types";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import StoreContext from "store/StoreContext";
@@ -7,10 +7,10 @@ import Store from "store/Store";
 import ContentWrapper from "./ContentWrapper";
 import { Add } from "@mui/icons-material";
 import classNames from "classnames";
-import { iteratorChildren } from "./iteratorChildren";
+import { iteratorChildren } from "../iteratorChildren";
 import QuickControl from "components/QuickControl";
 import styled from "@emotion/styled";
-import { isBlockElement, isEmptyTag } from "./ElementMaker";
+import { isBlockElement, isEmptyTag } from "../ComponentsPanel/ElementMaker";
 
 let countClicks = 0;
 

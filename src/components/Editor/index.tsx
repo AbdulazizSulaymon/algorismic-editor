@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 import { createRef, memo, useContext, useEffect } from "react";
 import StoreContext from "store/StoreContext";
 import { iteratorChildren } from "./iteratorChildren";
-import Components from "./Components";
+import Components from "./ComponentsPanel/Components";
 
 const Editor = observer(({ content }: { content: scheme }) => {
   const store = useContext(StoreContext);
