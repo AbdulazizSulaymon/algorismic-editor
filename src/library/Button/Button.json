@@ -1,5 +1,19 @@
 {
   "tag": "button",
-  "attributes": { "style": { "padding": 20, "color": "green" } },
+  "attributes": {
+    "style": {
+      "background-color": "#4CAF50",
+      "border": "none",
+      "color": "white",
+      "padding": "15px 32px",
+      "text-decoration": "none",
+      "display": "inline-block",
+      "margin": "4px 2px",
+      "fontSize": 20,
+      "boxShadow": "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+      "borderRadius": 10,
+      "cursor": "pointer"
+    }
+  },
   "children": "Button"
 }

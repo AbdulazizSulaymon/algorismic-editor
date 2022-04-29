@@ -1,5 +1,6 @@
 {
+  "name":"Paragraph",
   "tag": "p",
   "attributes": { "style": {} },
-  "children": "Text"
+  "children": "text"
 }

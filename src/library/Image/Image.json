@@ -1,4 +1,5 @@
 {
+  "name": "Image",
   "tag": "img",
   "attributes": {
     "style": { "width": 100 },

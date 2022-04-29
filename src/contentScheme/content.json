@@ -6,7 +6,10 @@
         "attributes": {
           "style": {
             "padding": 20,
-            "border": "2px solid black"
+            "border": "2px solid black",
+            "box-shadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
+            "borderRadius": 10,
+            "overflow": "hidden"
           }
         },
         "children": [
@@ -15,97 +18,124 @@
             "attributes": {
               "style": {
                 "fontSize": 30,
-                "pAlign": "center",
                 "color": "#123"
               }
             },
-            "children": "Tashkent City"
+            "children": "Algorismic Devs"
           },
           {
-            "tag": "button",
+            "name": "Buttons Groups",
+            "tag": "div",
             "attributes": {
               "style": {
-                "paddingTop": 10,
-                "paddingRight": 14,
-                "paddingBottom": 10,
-                "paddingLeft": 20,
-                "marginTop": 60,
-                "fontSize": 20,
-                "pAlign": "center",
-                "color": "#123"
+                "borderRadius": 10,
+                "overflow": "hidden",
+                "boxShadow": "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                "display": "inline-block",
+                "border": "1px solid #0a612f"
               }
             },
-            "children": "Website"
-          },
-          {
-            "tag": "button",
-            "attributes": {
-              "style": {
-                "paddingTop": 10,
-                "paddingRight": 14,
-                "paddingBottom": 10,
-                "paddingLeft": 20,
-                "marginTop": 60,
-                "fontSize": 20,
-                "pAlign": "center",
-                "color": "#123"
+            "children": [
+              {
+                "tag": "button",
+                "attributes": {
+                  "style": {
+                    "background-color": "#4CAF50",
+                    "color": "white",
+                    "padding": "10px 14px",
+                    "display": "inline-block",
+                    "fontSize": 20,
+                    "cursor": "pointer",
+                    "border": "0.4px solid #0a612f"
+                  }
+                },
+                "children": "Website"
+              },
+              {
+                "tag": "button",
+                "attributes": {
+                  "style": {
+                    "background-color": "#4CAF50",
+                    "color": "white",
+                    "padding": "10px 14px",
+                    "display": "inline-block",
+                    "fontSize": 20,
+                    "cursor": "pointer",
+                    "border": "0.4px solid #0a612f"
+                  }
+                },
+                "children": "Telegram"
+              },
+              {
+                "tag": "button",
+                "attributes": {
+                  "style": {
+                    "background-color": "#4CAF50",
+                    "color": "white",
+                    "padding": "10px 14px",
+                    "display": "inline-block",
+                    "fontSize": 20,
+                    "cursor": "pointer",
+                    "border": "0.4px solid #0a612f"
+                  }
+                },
+                "children": "Instagram"
               }
-            },
-            "children": "Social Network"
+            ]
           }
         ]
       },
       {
-        "tag": "div",
-        "children": {
-          "tag": "p",
-          "attributes": {
-            "style": {
-              "color": "green"
-            }
-          },
-          "children": "Thank you 1!"
-        }
-      },
-      {
+        "name": "Card",
         "tag": "div",
         "attributes": {
-          "style": {}
+          "style": {
+            "padding": 20,
+            "marginTop": 30,
+            "box-shadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
+            "transition": "0.3s",
+            "border": "2px solid black",
+            "borderRadius": 10,
+            "overflow": "hidden"
+          }
         },
         "children": [
           {
-            "tag": "div",
+            "tag": "p",
             "attributes": {
-              "style": { "padding": 10, "border": "2px solid #123", "borderRadius": 10 }
-            },
-            "children": [
-              {
-                "tag": "p",
-                "attributes": {
-                  "style": {
-                    "color": "green"
-                  }
-                },
-                "children": "Thank you 2!"
+              "style": {
+                "fontSize": 30,
+                "color": "#123"
               }
-            ]
-          },
+            },
+            "children": "Blog"
+          }
+        ]
+      },
+      {
+        "name": "Card",
+        "tag": "div",
+        "attributes": {
+          "style": {
+            "padding": 20,
+            "marginTop": 30,
+            "box-shadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
+            "transition": "0.3s",
+            "border": "2px solid black",
+            "borderRadius": 10,
+            "overflow": "hidden"
+          }
+        },
+        "children": [
           {
-            "tag": "div",
+            "tag": "p",
             "attributes": {
-              "style": { "padding": 10, "border": "2px solid #123", "borderRadius": 10 }
-            },
-            "children": [
-              {
-                "tag": "p",
-                "attributes": {
-                  "style": {
-                    "color": "green"
-                  }
-                },
-                "children": "Thank you 3!"
+              "style": {
+                "fontSize": 30,
+                "color": "#123"
               }
-            ]
+            },
+            "children": "About"
           }
         ]
       }

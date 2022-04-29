@@ -1,0 +1,45 @@
+{
+  "name": "Buttons Groups",
+  "tag": "div",
+  "attributes": {
+    "style": {
+      "borderRadius": 10,
+      "overflow": "hidden",
+      "boxShadow": "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+      "display": "inline-block",
+      "border": "1px solid #0a612f"
+    }
+  },
+  "children": [
+    {
+      "tag": "button",
+      "attributes": {
+        "style": {
+          "background-color": "#4CAF50",
+          "color": "white",
+          "padding": "10px 14px",
+          "display": "inline-block",
+          "fontSize": 20,
+          "cursor": "pointer",
+          "border": "0.4px solid #0a612f"
+        }
+      },
+      "children": "Left"
+    },
+    {
+      "tag": "button",
+      "attributes": {
+        "style": {
+          "background-color": "#4CAF50",
+          "color": "white",
+          "padding": "10px 14px",
+          "display": "inline-block",
+          "fontSize": 20,
+          "cursor": "pointer",
+          "border": "0.4px solid #0a612f"
+        }
+      },
+      "children": "Right"
+    }
+  ]
+}

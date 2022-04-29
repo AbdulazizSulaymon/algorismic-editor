@@ -1,17 +1,20 @@
 {
-  "name": "Buttons Groups",
-  "tag": "button",
-  "attributes": { "style": { "padding": 20, "color": "green" } },
+  "name": "Box",
+  "tag": "div",
+  "attributes": {
+    "style": {
+      "padding": 20,
+      "border": "2px solid black",
+      "box-shadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
+      "borderRadius": 10,
+      "overflow": "hidden"
+    }
+  },
   "children": [
     {
-      "tag": "button",
-      "attributes": { "style": { "padding": 20, "color": "green" } },
-      "children": "Button1"
-    },
-    {
-      "tag": "button",
-      "attributes": { "style": { "padding": 20, "color": "green" } },
-      "children": "Button2"
+      "tag": "span",
+      "attributes": { "style": {} },
+      "children": ""
     }
   ]
 }

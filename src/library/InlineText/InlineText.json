@@ -1,0 +1,6 @@
+{
+  "name": "InlineText",
+  "tag": "span",
+  "attributes": { "style": {} },
+  "children": "inline"
+}

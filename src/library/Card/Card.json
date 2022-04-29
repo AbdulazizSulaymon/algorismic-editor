@@ -1,0 +1,35 @@
+{
+  "name": "Card",
+  "tag": "div",
+  "attributes": {
+    "style": {
+      "box-shadow": "0 4px 8px 0 rgba(0,0,0,0.2)",
+      "transition": "0.3s",
+      "width": "100%",
+      "maxWidth": "300px",
+      "borderRadius": 10,
+      "overflow": "hidden"
+    }
+  },
+  "children": [
+    {
+      "tag": "img",
+      "attributes": {
+        "style": { "width": "100%" },
+        "alt": "Avatar",
+        "src": "https://www.w3schools.com/howto/img_avatar.png"
+      },
+      "children": "text"
+    },
+    {
+      "tag": "h4",
+      "attributes": { "style": { "margin": 10 } },
+      "children": "John Doe"
+    },
+    {
+      "tag": "p",
+      "attributes": { "style": { "margin": 10 } },
+      "children": "Architect & Engineer"
+    }
+  ]
+}
