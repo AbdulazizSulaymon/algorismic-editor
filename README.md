@@ -11,12 +11,12 @@ Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-edito
 - add ids to elements that adding (1) //
 - add element (2) //
 - quick control panel (3) //
-- remove element (4)
+- remove element (4) //
 - move element (5)
 - download element html code (6)
 - elements json (7)
 - beautiful elements (8)
-- do better layout (9)
+- do better layout (9) //
 
 # links
 

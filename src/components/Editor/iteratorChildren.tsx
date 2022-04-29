@@ -1,8 +1,10 @@
 import { children, element } from "./types";
 
 export const iteratorChildren = (children: children, callback: any = () => {}) => {
-  const getElement = (elem: element) =>
-    typeof elem.children != "string" ? getContent(elem.children) : elem.children;
+  const getElement = (elem: element) => {
+    if (!elem.children) return "";
+    return typeof elem.children != "string" ? getContent(elem.children) : elem.children;
+  };
 
   const getElements = (item: element) => {
     callback(item);

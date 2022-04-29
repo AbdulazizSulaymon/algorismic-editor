@@ -40,7 +40,8 @@ const EditorWrapper = styled.div`
       position: sticky;
       top: 0;
       max-height: calc(100vh - 80px);
-      border: 1px solid #c6cae2;
+      border-left: 1px solid #c6cae2;
+      border-right: 1px solid #c6cae2;
       overflow: auto;
     }
     aside {

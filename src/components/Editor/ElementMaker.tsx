@@ -6,6 +6,34 @@ import StoreContext from "store/StoreContext";
 import { iteratorChildren } from "./iteratorChildren";
 import { toJS } from "mobx";
 
+const blockElements = [
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "div",
+  "ol",
+  "ul",
+  "pre",
+  "address",
+  "blockquote",
+  "dl",
+  "div",
+  "fieldset",
+  "form",
+  "hr",
+  "noscript",
+  "table",
+];
+
+const emptyTags = ["br", "hr", "img", "input", "link", "meta", "source"];
+
+export const isBlockElement = (tag: string) => blockElements.includes(tag);
+export const isEmptyTag = (tag: string) => emptyTags.includes(tag);
+
 const ElementMaker = observer(({ elem }: { elem: element }) => {
   const store = useContext(StoreContext);
 
@@ -19,17 +47,22 @@ const ElementMaker = observer(({ elem }: { elem: element }) => {
   };
 
   const getElement = (elem: element) => {
-    const { tag: Tag, attributes, children } = elem;
+    if (elem == undefined) return <></>;
+
+    const { tag: Tag, attributes } = elem;
+    const children = elem.children || "";
 
     const attrs = toJS(attributes);
     // attrs.draggable = true;
     // attrs.onDragStart = drag;
 
-    return (
-      <Tag {...attrs} key={attrs.id}>
-        {typeof children != "string" ? getContent(children) : children}
-      </Tag>
-    );
+    if (!isEmptyTag(Tag))
+      return (
+        <Tag {...attrs} key={attrs.id}>
+          {typeof children != "string" ? getContent(children) : children}
+        </Tag>
+      );
+    else return <Tag {...attrs} key={attrs.id} />;
   };
 
   const getElements = (item: element) =>

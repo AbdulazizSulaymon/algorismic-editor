@@ -44,13 +44,15 @@ const QuickControl = observer(() => {
   const [left, setLeft] = useState(0);
 
   const store = useContext(StoreContext);
-  const id = toJS(store.selectedElement.attributes.id);
-  const fatherId = toJS(store.selectedElementFather.attributes.id);
+  const id = store.selectedElement.attributes.id;
+  const fatherId = store.selectedElementFather.attributes.id;
 
   useEffect(() => {
     if (!id) return;
 
     const updatePosition = () => {
+      const id = store.selectedElement.attributes.id;
+
       const elem = document.getElementById(id);
       const rect: any = elem?.getBoundingClientRect() || {};
 

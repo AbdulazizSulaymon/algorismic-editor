@@ -9,10 +9,17 @@ import { Add } from "@mui/icons-material";
 import classNames from "classnames";
 import { iteratorChildren } from "./iteratorChildren";
 import QuickControl from "components/QuickControl";
+import styled from "@emotion/styled";
+import { isBlockElement, isEmptyTag } from "./ElementMaker";
 
 let countClicks = 0;
 
 const prepareAttributes = (attrs: any = {}, elem: element, store: Store) => {
+  attrs.style = { ...attrs.style };
+  if (store.isDragging) {
+    attrs.style.border = "1px solid silver";
+  }
+
   attrs.className = classNames({
     hover: store.selectedElement.attributes.id === attrs.id,
     "element-editor": true,
@@ -34,12 +41,24 @@ const prepareAttributes = (attrs: any = {}, elem: element, store: Store) => {
   return attrs;
 };
 
+const DropZone = styled.div`
+  padding: 3px 5px;
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 14px;
+`;
+
 const ContentMaker = observer(() => {
   const store = useContext(StoreContext);
   const { scheme } = store;
 
-  const getElement = (elem: element, container: any) => {
-    const { tag: Tag, attributes, children } = elem;
+  const getElement = (elem: element) => {
+    if (elem == undefined) return <></>;
+
+    const { tag: Tag, attributes } = elem;
+    const children = elem.children || "";
 
     const attrs = prepareAttributes(toJS(attributes), elem, store);
 
@@ -53,18 +72,18 @@ const ContentMaker = observer(() => {
       store.isDragging = false;
       const newElem = toJS(store.draggingElement);
 
-      iteratorChildren(newElem, (elem: element) => {
-        if (!elem.attributes) elem.attributes = {};
-        elem.attributes.id = `id${store.lastId++}`;
+      iteratorChildren(newElem, (item: element) => {
+        if (!item) return;
+        console.log(item);
+
+        if (!item.attributes) item.attributes = {};
+        item.attributes.id = `id${store.lastId++}`;
       });
 
       const domNode = document.getElementById(elem.attributes.id);
       domNode?.click();
 
       setTimeout(() => {
-        console.log("selectedElementFather id", toJS(store.selectedElementFather.attributes.id));
-        console.log(toJS(store.selectedElementFather));
-
         let children: any = store.selectedElementFather.children;
         if (Array.isArray(children)) {
           children.map((item, idx) => {
@@ -80,47 +99,34 @@ const ContentMaker = observer(() => {
 
     return (
       <>
-        <Tag {...attrs} key={attrs.id}>
-          {typeof children != "string" ? getContent(children, children) : children}
-        </Tag>
+        {!isEmptyTag(Tag) ? (
+          <Tag {...attrs} key={attrs.id}>
+            {typeof children != "string" ? getContent(children) : children}
+          </Tag>
+        ) : (
+          <Tag {...attrs} key={attrs.id} />
+        )}
         {store.isDragging && (
-          <div
-            onDrop={drop}
-            onDragOver={allowDrop}
-            style={{
-              padding: "6px 10px",
-              margin: "10px",
-              border: "1px solid black",
-              borderRadius: 6,
-              display: "inline-block",
-            }}
-          >
+          <DropZone onDrop={drop} onDragOver={allowDrop}>
             <Add />
-          </div>
+          </DropZone>
         )}
       </>
     );
   };
 
-  const getElements = (item: element, container: element[]) =>
+  const getElements = (item: element) =>
     typeof item === "string"
-      ? getElement({ tag: "span", children: item, attributes: { id: store.lastId } }, container)
-      : getElement(item, container);
+      ? getElement({ tag: "span", children: item, attributes: { id: store.lastId } })
+      : getElement(item);
 
-  const getContent = (items: any, container: any): React.ReactNode => {
-    return Array.isArray(items)
-      ? items.map((item) => getElements(item, items))
-      : getElements(items, container);
+  const getContent = (items: any): React.ReactNode => {
+    return Array.isArray(items) ? items.map((item) => getElements(item)) : getElements(items);
   };
-
-  // scheme.page.children = [{ tag: "div", children: scheme.page.children }];
 
   return (
     <ContentWrapper>
-      {getContent(
-        scheme.page.children,
-        Array.isArray(scheme.page.children) ? scheme.page.children : scheme.page
-      )}
+      {getContent(scheme.page.children)}
       <QuickControl />
     </ContentWrapper>
   );
