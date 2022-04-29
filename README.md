@@ -5,9 +5,8 @@ Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-edito
 
 ## Todo
 
-- collapse style
-- themenig
-
+- collapse style //
+- themenig //
 - add ids to elements that adding (1) //
 - add element (2) //
 - quick control panel (3) //
