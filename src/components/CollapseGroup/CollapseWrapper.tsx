@@ -12,6 +12,7 @@ const CollapseWrapper = styled.div`
     padding: 10px 0;
     cursor: pointer;
     transition: 0.2s;
+    user-select: none;
 
     &:hover {
       transform: translateX(2px);
@@ -22,8 +23,14 @@ const CollapseWrapper = styled.div`
     }
   }
 
+  .collapseBody {
+    overflow: hidden;
+    transition: 0.2s;
+    min-height: 0;
+  }
+
   &.show {
-    .title {
+    & > .title {
       svg {
         transform: rotateZ(90deg) !important;
       }

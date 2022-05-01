@@ -54,6 +54,11 @@ const ContentMaker = observer(() => {
   const store = useContext(StoreContext);
   const { scheme } = store;
 
+  useEffect(() => {
+    if (Array.isArray(scheme.page.children) && scheme.page.children.length)
+      store.selectedElement = scheme.page.children[0];
+  }, [scheme.page]);
+
   const getElement = (elem: element) => {
     if (elem == undefined) return <></>;
 

@@ -4,6 +4,7 @@ const EditorWrapper = styled.div`
   header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 8px 20px;
     box-shadow: 0 10px 20px 0 #00000022;
     position: sticky;
@@ -11,13 +12,25 @@ const EditorWrapper = styled.div`
     z-index: 999;
     ${({ theme }: { theme: any }) => `background-color: ${theme.colors.light};`}
 
-    .logo {
-      height: 30px;
-      margin-right: 14px;
+    .left {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        height: 30px;
+        margin-right: 14px;
+      }
+      .title {
+        font-size: 20px !important ;
+        font-weight: 700;
+      }
     }
-    .title {
-      font-size: 20px !important ;
-      font-weight: 700;
+
+    .btnFullScreen {
+      ${({ theme }: { theme: any }) => `background-color: ${theme.colors.light};`}
+      padding: 10px;
+      color: black;
+      box-shadow: none;
     }
   }
 
@@ -27,7 +40,7 @@ const EditorWrapper = styled.div`
     margin: auto;
 
     section.components {
-      width: 260px;
+      width: 300px;
       padding: 20px;
       position: sticky;
       top: 0;
@@ -45,7 +58,7 @@ const EditorWrapper = styled.div`
       overflow: auto;
     }
     aside {
-      width: 260px;
+      width: 300px;
       padding: 20px;
       position: sticky;
       top: 0;

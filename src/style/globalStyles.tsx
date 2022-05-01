@@ -51,6 +51,22 @@ const globalStyles = css`
   .jc-between {
     justify-content: space-between;
   }
+
+  /* scroolBar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px transparent !important;
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.5) !important;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f0f0f06e;
+  }
 `;
 
 export default globalStyles;

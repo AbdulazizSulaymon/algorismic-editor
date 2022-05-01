@@ -83,7 +83,7 @@ const QuickControl = observer(() => {
     store.selectedElementFather = getEmptyElement();
   };
 
-  if (!id) return <></>;
+  if (!id || store.isDragging) return <></>;
 
   return createPortal(
     <Wrapper id="quickPanel" style={{ top, left }}>

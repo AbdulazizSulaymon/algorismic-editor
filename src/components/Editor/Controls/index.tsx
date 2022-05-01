@@ -1,30 +1,17 @@
-import { toJS } from "mobx";
 import { observer } from "mobx-react";
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from "react";
 import StoreContext from "store/StoreContext";
 import CollapseGroup from "../../CollapseGroup";
 import Input from "../../Input";
-import { iteratorChildren } from "../iteratorChildren";
-import { element } from "../types";
 import * as _ from "lodash";
 import TextArea from "components/Textarea";
-import Button from "components/Button";
-import { DownloadText, postText, preText } from "./utils";
 
 const Controls = observer(() => {
   const store = useContext(StoreContext);
 
-  const [target, setTarget] = useState({} as element);
-
-  useEffect(() => {
-    iteratorChildren(store.scheme.page.children, (elem: element) => {
-      if (elem.attributes.id == store.selectedElement.attributes.id) setTarget(elem);
-    });
-  }, [store.selectedElement]);
+  const target = store.selectedElement;
 
   if (!target.tag) return <p>Select Element</p>;
-
-  // target.attributes.style.color = "red";
 
   let { style } = target.attributes;
   let { tag, attributes, children } = target;
@@ -32,14 +19,6 @@ const Controls = observer(() => {
   const getValue = (e: ChangeEvent<Element>) => {
     const input = e.target as HTMLInputElement;
     return input.value;
-  };
-
-  const download = () => {
-    const id = target.attributes.id;
-    const domNode = document.getElementById(id);
-    const outer = domNode?.outerHTML;
-    console.log(outer);
-    if (outer) DownloadText(`${preText}${outer}${postText}`, "page.html");
   };
 
   return (
@@ -221,7 +200,6 @@ const Controls = observer(() => {
           />
         </CollapseGroup>
       </CollapseGroup>
-      <Button onClick={download}>Download HTML</Button>
     </>
   );
 });
