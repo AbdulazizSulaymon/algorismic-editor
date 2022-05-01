@@ -8,15 +8,16 @@ import TextArea from "components/Textarea";
 import { toJS } from "mobx";
 
 const Controls = observer(() => {
-  const [color, setColor] = useState("#123");
   const store = useContext(StoreContext);
 
   const target = store.selectedElement;
 
   if (!target.tag) return <p>Select Element</p>;
 
-  let { style } = target.attributes;
   let { tag, attributes, children } = target;
+
+  if (!target.attributes.style) target.attributes.style = {};
+  let { style } = target.attributes;
 
   const getValue = (e: ChangeEvent<Element>) => {
     const input = e.target as HTMLInputElement;
