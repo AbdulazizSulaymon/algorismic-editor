@@ -5,8 +5,10 @@ import CollapseGroup from "../../CollapseGroup";
 import Input from "../../Input";
 import * as _ from "lodash";
 import TextArea from "components/Textarea";
+import { toJS } from "mobx";
 
 const Controls = observer(() => {
+  const [color, setColor] = useState("#123");
   const store = useContext(StoreContext);
 
   const target = store.selectedElement;
@@ -183,7 +185,9 @@ const Controls = observer(() => {
             />
           </div>
         </CollapseGroup>
-        <CollapseGroup title={"Typography"}>
+      </CollapseGroup>
+      <CollapseGroup title={"Typography"}>
+        <div className="d-flex">
           <Input
             value={_.get(style, "color", "")}
             label="Color"
@@ -192,13 +196,13 @@ const Controls = observer(() => {
             onChange={(e) => (style.color = getValue(e))}
           />
           <Input
-            value={_.get(style, "backgroundColor", "")}
-            label="Background Color"
+            value={_.get(style, "backgroundColor", "transparent")}
+            label="Background"
             name="backgroundColor"
             type="color"
             onChange={(e) => (style.backgroundColor = getValue(e))}
           />
-        </CollapseGroup>
+        </div>
       </CollapseGroup>
     </>
   );

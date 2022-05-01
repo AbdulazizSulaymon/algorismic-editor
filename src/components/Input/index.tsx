@@ -50,6 +50,7 @@ export default function Input({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        style={{ padding: type === "color" ? 0 : "auto" }}
       />
     </StyledInput>
   );
