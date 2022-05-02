@@ -5,7 +5,6 @@ import CollapseGroup from "../../CollapseGroup";
 import Input from "../../Input";
 import * as _ from "lodash";
 import TextArea from "components/Textarea";
-import { toJS } from "mobx";
 
 const Controls = observer(() => {
   const store = useContext(StoreContext);
