@@ -196,6 +196,10 @@ const Controls = observer(() => {
             type="color"
             onChange={(e) => (style.color = getValue(e))}
           />
+        </div>
+      </CollapseGroup>
+      <CollapseGroup title={"Appearance"}>
+        <div className="d-flex">
           <Input
             value={_.get(style, "backgroundColor", "transparent")}
             label="Background"

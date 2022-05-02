@@ -1,12 +1,12 @@
-import library from "library";
 import { observer } from "mobx-react";
 import { memo } from "react";
+import { element } from "../types";
 import ElementMaker from "./ElementMaker";
 
-const Components = observer(() => {
+const Components = observer(({ components }: { components: Array<element> }) => {
   return (
     <>
-      {library.map((elem, index) => (
+      {components.map((elem, index) => (
         <ElementMaker elem={elem} key={index} />
       ))}
     </>

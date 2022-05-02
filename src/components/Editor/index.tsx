@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 import { memo, useContext, useEffect, useState } from "react";
 import StoreContext from "store/StoreContext";
 import { iteratorChildren } from "./iteratorChildren";
-import Components from "./ComponentsPanel/Components";
+import ComponentsContainer from "./ComponentsPanel/Components";
 import Tab from "components/Tab";
 import Layers from "./Layers";
 import Button from "components/Button";
@@ -15,6 +15,8 @@ import Download from "./Download";
 import { fullscreen, hasFullscreen } from "./fullscreen";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
+import Elements from "library/Elements";
+import Components from "library/Components";
 
 const Editor = observer(({ content }: { content: scheme }) => {
   const store = useContext(StoreContext);
@@ -46,8 +48,16 @@ const Editor = observer(({ content }: { content: scheme }) => {
       </header>
       <section className="panel">
         <section className="components">
-          <Title>Components</Title>
-          <Components />
+          <Tab tabs={["Elements", "Components"]}>
+            <>
+              <Title>Elements</Title>
+              <ComponentsContainer components={Elements} />
+            </>
+            <>
+              <Title>Components</Title>
+              <ComponentsContainer components={Components} />
+            </>
+          </Tab>
         </section>
         <main>
           <Title>Content</Title>
