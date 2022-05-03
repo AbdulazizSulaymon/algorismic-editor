@@ -1,0 +1,10 @@
+{
+  "name": "Audio",
+  "tag": "audio",
+  "attributes": {
+    "style": { "maxWidth": "100%" },
+    "alt": "Audio Element",
+    "src": "https://algorismic-editor.vercel.app/audio.mp3",
+    "controls": true
+  }
+}

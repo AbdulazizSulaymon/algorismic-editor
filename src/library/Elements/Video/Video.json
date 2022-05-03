@@ -1,0 +1,10 @@
+{
+  "name": "Video",
+  "tag": "video",
+  "attributes": {
+    "style": { "maxWidth": "100%" },
+    "alt": "Video Element",
+    "src": "https://algorismic-editor.vercel.app/video.mp4",
+    "controls": true
+  }
+}

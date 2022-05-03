@@ -36,7 +36,7 @@ const Controls = observer(() => {
           placeholder="Be careful"
         />
       )}
-      {tag == "img" && (
+      {["img", "audio", "video"].includes(tag) && (
         <>
           <Input
             value={_.get(attributes, "src", "")}
