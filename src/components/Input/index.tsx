@@ -6,7 +6,7 @@ const StyledInput = styled.div`
   margin-bottom: 10px;
   flex: 1;
   width: 100%;
-  max-width: 190px;
+  max-width: 300px;
 
   label {
     margin-bottom: 4px;

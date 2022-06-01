@@ -1,0 +1,17 @@
+{
+  "name": "Ordered List",
+  "tag": "ol",
+  "attributes": { "style": {} },
+  "children": [
+    {
+      "tag": "li",
+      "attributes": { "style": {} },
+      "children": "item 1"
+    },
+    {
+      "tag": "li",
+      "attributes": { "style": {} },
+      "children": "item 2"
+    }
+  ]
+}

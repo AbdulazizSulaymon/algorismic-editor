@@ -25,6 +25,17 @@ const Controls = observer(() => {
 
   return (
     <>
+      {tag == "a" && (
+        <Input
+          value={_.get(attributes, "href", "")}
+          label="href"
+          name="href"
+          onChange={(e) => {
+            target.attributes.href = getValue(e);
+          }}
+          placeholder="href"
+        />
+      )}
       {typeof children == "string" && (
         <TextArea
           value={children}

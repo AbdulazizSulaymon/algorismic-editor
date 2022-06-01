@@ -1,0 +1,15 @@
+{
+  "name": "Input",
+  "tag": "input",
+  "attributes": {
+    "style": {
+      "borderRadius": 4,
+      "border": "none",
+      "outline": "none",
+      "padding": 10,
+      "maxWidth": "100%"
+    },
+    "placeholder": "name"
+  },
+  "children": ""
+}

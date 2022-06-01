@@ -1,0 +1,17 @@
+{
+  "name": "Unordered List",
+  "tag": "ul",
+  "attributes": { "style": { "listStyleType": "circle" } },
+  "children": [
+    {
+      "tag": "li",
+      "attributes": { "style": {} },
+      "children": "item 1"
+    },
+    {
+      "tag": "li",
+      "attributes": { "style": {} },
+      "children": "item 2"
+    }
+  ]
+}

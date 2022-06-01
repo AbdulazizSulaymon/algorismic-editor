@@ -6,8 +6,10 @@ Algorismic Editor [Github](https://github.com/AbdulazizSulaymon/algorismic-edito
 ## Todo
 
 - html elements
-- beautiful components
+- beautiful components (buttons, cards, jumbotron, headers, footers)
 - css controls, selects
 - history
 - move elements
 - copy, paste elements
+- connect bootstrap to page
+- connect fontawesome to page

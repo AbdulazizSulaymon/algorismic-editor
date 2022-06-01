@@ -1,6 +1,6 @@
 {
   "name": "Link",
   "tag": "a",
-  "attributes": { "style": { "href": "https://www.algorismic.uz/" } },
+  "attributes": { "style": {}, "href": "https://www.algorismic.uz/" },
   "children": "link"
 }
